@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | IronCore Pharma</title>
+    <meta name="description" content="Log in or create your IronCore Pharma account." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=20" />
+  </head>
+  <body>
+    <div class="top-strip">
+      <div class="container top-strip__inner">
+        <p>IronCore Pharma | ISO 9001:2015 Certified Pharmaceutical Company</p>
+        <div class="top-strip__links">
+          <a href="tel:+919056731984">+91-9056731984</a>
+          <a href="mailto:info@ironcorehealth.com">info@ironcorehealth.com</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="auth-wrap">
+      <div class="auth-card">
+        <a class="brand auth-brand" href="index.html">
+          <img src="img/logo.svg" alt="" />
+          <span>
+            <strong>IronCore</strong>
+            <small>Pharma</small>
+          </span>
+        </a>
+
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="auth-tab is-active" data-mode="login">Login</button>
+          <button type="button" class="auth-tab" data-mode="signup">Create Account</button>
+        </div>
+
+        <p class="auth-lead" id="auth-lead">Welcome back — log in to your account.</p>
+
+        <form id="auth-form" novalidate>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" id="auth-email" placeholder="you@example.com" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" id="auth-password" placeholder="Your password" autocomplete="current-password" required />
+          </label>
+
+          <p class="auth-msg" id="auth-msg" role="alert" aria-live="polite"></p>
+
+          <button class="btn btn-primary auth-submit" type="submit" id="auth-submit">Login</button>
+        </form>
+
+        <p class="auth-switch">
+          <span id="auth-switch-text">New to IronCore?</span>
+          <a href="#" id="auth-switch-link">Create an account</a>
+        </p>
+
+        <a class="auth-back" href="index.html">&larr; Back to store</a>
+      </div>
+    </main>
+
+    <script src="js/auth.js?v=20"></script>
+  </body>
+</html>

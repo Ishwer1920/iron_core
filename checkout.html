@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | IronCore Pharma</title>
+    <meta name="description" content="Enter your delivery and payment details to place your IronCore Pharma order." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=20" />
+  </head>
+  <body class="checkout-page">
+    <div class="top-strip">
+      <div class="container top-strip__inner">
+        <p>IronCore Pharma | ISO 9001:2015 Certified Pharmaceutical Company</p>
+        <div class="top-strip__links">
+          <a href="tel:+919056731984">+91-9056731984</a>
+          <a href="mailto:info@ironcorehealth.com">info@ironcorehealth.com</a>
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header" id="top">
+      <div class="header-main">
+        <div class="container header-main__inner">
+          <a class="brand" href="index.html#home" aria-label="IronCore Pharma home">
+            <img src="img/logo.svg" alt="" />
+            <span><strong>IronCore</strong><small>Pharma</small></span>
+          </a>
+          <form class="site-search" role="search">
+            <input type="search" placeholder="Search for tablets, syrups, capsules..." aria-label="Search" />
+            <button type="submit" aria-label="Search">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+            </button>
+          </form>
+          <div class="header-icons">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+              <span></span><span></span><span></span>
+            </button>
+            <a class="icon-btn" id="account-link" href="login.html" aria-label="Account">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>
+            </a>
+            <a class="icon-btn wishlist-btn" id="wishlist-link" href="wishlist.html" aria-label="Favorites">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 3c0 4.5-9.5 12-9.5 12Z" /></svg>
+              <span class="cart-badge wishlist-badge is-empty">0</span>
+            </a>
+            <a class="icon-btn cart-btn" href="cart.html" aria-label="Cart">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg>
+              <span class="cart-badge is-empty">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-cats">
+        <div class="container header-cats__inner">
+          <div class="nav-item all-categories">
+            <button class="all-categories__btn" type="button">
+              <span class="bars"><i></i><i></i><i></i></span>
+              <span class="label">All Categories</span>
+              <span class="caret">&#9662;</span>
+            </button>
+            <div class="dropdown all-categories__menu">
+              <a href="products.html#tablets">Tablets</a>
+              <a href="products.html#capsules">Capsules</a>
+              <a href="products.html#syrups">Syrups</a>
+              <a href="products.html#injections">Injections</a>
+              <a href="products.html#ointments">Ointment/Gels</a>
+              <a href="products.html#eye-drops">Eye Drops</a>
+              <a href="products.html#protein-powder">Protein Powder</a>
+              <a href="products.html#new-products">New Products</a>
+            </div>
+          </div>
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="products.html">Products</a>
+            <a href="verify.html">Verify Product</a>
+            <a href="index.html#manufacturing">3rd Party Manufacturing</a>
+            <a href="index.html#divisions">Our Divisions</a>
+            <a href="index.html#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero">
+        <div class="container">
+          <h1>Checkout</h1>
+          <p><a href="index.html#home">Home</a> / <a href="cart.html">Cart</a> / Checkout</p>
+        </div>
+      </section>
+
+      <section class="cart-section">
+        <div class="container">
+          <ol class="checkout-steps" aria-label="Checkout progress">
+            <li class="is-done"><a href="cart.html">1. Cart</a></li>
+            <li class="is-active">2. Payment</li>
+            <li>3. Done</li>
+          </ol>
+
+          <!-- Checkout form + summary -->
+          <form class="cart-grid" id="checkout-grid" data-no-enquiry novalidate>
+            <div class="checkout-forms">
+              <section class="checkout-card">
+                <h3>Delivery details</h3>
+                <div class="field-grid">
+                  <label class="field-full">Full name<input type="text" id="c-name" autocomplete="name" placeholder="Name for delivery" required /></label>
+                  <label>Phone<input type="tel" id="c-phone" autocomplete="tel" placeholder="Mobile number" required /></label>
+                  <label>Email<input type="email" id="c-email" autocomplete="email" placeholder="you@example.com" /></label>
+                  <label class="field-full">Address<textarea id="c-address" rows="2" autocomplete="street-address" placeholder="House no, street, area" required></textarea></label>
+                  <label>City<input type="text" id="c-city" autocomplete="address-level2" placeholder="City" /></label>
+                  <label>State<input type="text" id="c-state" autocomplete="address-level1" placeholder="State" /></label>
+                  <label>PIN code<input type="text" id="c-pincode" inputmode="numeric" autocomplete="postal-code" placeholder="6-digit PIN" /></label>
+                </div>
+              </section>
+
+              <section class="checkout-card">
+                <h3>Payment method</h3>
+                <div class="pay-methods" id="pay-methods">
+                  <label class="pay-method">
+                    <input type="radio" name="pay" value="card" checked />
+                    <span class="pay-method__body"><strong>Card</strong><small>Credit / Debit card</small></span>
+                  </label>
+                  <label class="pay-method">
+                    <input type="radio" name="pay" value="upi" />
+                    <span class="pay-method__body"><strong>UPI</strong><small>GPay, PhonePe, Paytm</small></span>
+                  </label>
+                  <label class="pay-method">
+                    <input type="radio" name="pay" value="netbanking" />
+                    <span class="pay-method__body"><strong>Net Banking</strong><small>All major banks</small></span>
+                  </label>
+                  <label class="pay-method">
+                    <input type="radio" name="pay" value="cod" />
+                    <span class="pay-method__body"><strong>Cash on Delivery</strong><small>Pay when it arrives</small></span>
+                  </label>
+                </div>
+
+                <div class="pay-fields" id="pay-card">
+                  <div class="field-grid">
+                    <label class="field-full">Card number<input type="text" id="card-number" inputmode="numeric" placeholder="1234 5678 9012 3456" autocomplete="cc-number" /></label>
+                    <label class="field-full">Name on card<input type="text" id="card-name" placeholder="Cardholder name" autocomplete="cc-name" /></label>
+                    <label>Expiry<input type="text" id="card-exp" placeholder="MM/YY" autocomplete="cc-exp" /></label>
+                    <label>CVV<input type="password" id="card-cvv" inputmode="numeric" placeholder="123" autocomplete="cc-csc" maxlength="4" /></label>
+                  </div>
+                </div>
+
+                <div class="pay-fields" id="pay-upi" hidden>
+                  <label class="field-full">UPI ID<input type="text" id="upi-id" placeholder="yourname@bank" /></label>
+                </div>
+
+                <div class="pay-fields" id="pay-netbanking" hidden>
+                  <label class="field-full">Select bank
+                    <select id="nb-bank">
+                      <option value="">Choose your bank</option>
+                      <option>HDFC Bank</option>
+                      <option>State Bank of India</option>
+                      <option>ICICI Bank</option>
+                      <option>Axis Bank</option>
+                      <option>Punjab National Bank</option>
+                      <option>Kotak Mahindra Bank</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="pay-fields" id="pay-cod" hidden>
+                  <p class="cod-note">Pay in cash when your order is delivered. Please keep the exact amount ready.</p>
+                </div>
+              </section>
+            </div>
+
+            <aside class="checkout-summary">
+              <h3>Order Summary</h3>
+              <div class="summary-items" id="summary-items"></div>
+              <dl class="summary-lines">
+                <div><dt>Subtotal</dt><dd id="sum-subtotal">&#8377;0.00</dd></div>
+                <div><dt>Shipping</dt><dd id="sum-shipping">&#8377;0.00</dd></div>
+                <div class="summary-total"><dt>Total</dt><dd id="sum-total">&#8377;0.00</dd></div>
+              </dl>
+              <p class="summary-note" id="summary-note"></p>
+              <p class="cart-error" id="checkout-error" aria-live="polite"></p>
+              <button class="btn btn-primary summary-cta" id="place-order" type="submit">Place Order</button>
+              <a class="summary-cont" href="cart.html">&larr; Back to cart</a>
+            </aside>
+          </form>
+
+          <!-- Empty-cart fallback -->
+          <div class="store-empty" id="checkout-empty" hidden>
+            <div class="store-empty__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg>
+            </div>
+            <h2>Nothing to check out</h2>
+            <p>Your cart is empty. Add some products first.</p>
+            <a class="btn btn-primary" href="products.html">Shop products</a>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="track">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="index.html#home">
+            <img src="img/logo.svg" alt="" />
+            <span><strong>IronCore</strong><small>Pharma</small></span>
+          </a>
+          <p>IronCore Pharma is a trusted pharmaceutical company offering effective medicines, franchise support, and third-party manufacturing coordination across India.</p>
+        </div>
+        <div>
+          <h3>Shortcut Links</h3>
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="products.html">Products</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div>
+          <h3>Product Categories</h3>
+          <a href="products.html#infusions">Infusions</a>
+          <a href="products.html#capsules">Capsules</a>
+          <a href="products.html#tablets">Tablets</a>
+          <a href="products.html#injections">Injections</a>
+        </div>
+        <div>
+          <h3>Our Address</h3>
+          <p>IronCore Pharma<br />Industrial Area, Phase-2<br />Panchkula, Haryana</p>
+          <a href="tel:+919056731984">+91-9056731984</a>
+          <a href="mailto:info@ironcorehealth.com">info@ironcorehealth.com</a>
+        </div>
+      </div>
+      <div class="container copyright">
+        <p>Copyright &copy; 2026 IronCore Pharma | All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script src="js/products-data.js?v=20" defer></script>
+    <script src="js/store.js?v=20" defer></script>
+    <script src="js/main.js?v=20" defer></script>
+    <script src="js/auth.js?v=20" defer></script>
+    <script src="js/checkout.js?v=20" defer></script>
+  </body>
+</html>

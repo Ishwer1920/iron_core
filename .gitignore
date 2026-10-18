@@ -1,0 +1,23 @@
+# --- Secrets & local data (NEVER commit) ---
+data/app.db
+data/secret.key
+data/ADMIN_CREDENTIALS.txt
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# --- Logs / temp ---
+*.log
+*.tmp

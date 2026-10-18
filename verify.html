@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Product | IronCore Pharma</title>
+    <meta name="description" content="Check the authenticity of your IronCore Pharma product using the code printed on the pack." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=20" />
+  </head>
+  <body class="verify-page">
+    <div class="top-strip">
+      <div class="container top-strip__inner">
+        <p>IronCore Pharma | ISO 9001:2015 Certified Pharmaceutical Company</p>
+        <div class="top-strip__links">
+          <a href="tel:+919056731984">+91-9056731984</a>
+          <a href="mailto:info@ironcorehealth.com">info@ironcorehealth.com</a>
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header" id="top">
+      <div class="header-main">
+        <div class="container header-main__inner">
+          <a class="brand" href="index.html#home" aria-label="IronCore Pharma home">
+            <img src="img/logo.svg" alt="" />
+            <span><strong>IronCore</strong><small>Pharma</small></span>
+          </a>
+          <form class="site-search" role="search">
+            <input type="search" placeholder="Search for tablets, syrups, capsules..." aria-label="Search" />
+            <button type="submit" aria-label="Search">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+            </button>
+          </form>
+          <div class="header-icons">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+              <span></span><span></span><span></span>
+            </button>
+            <a class="icon-btn" id="account-link" href="login.html" aria-label="Account">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>
+            </a>
+            <a class="icon-btn wishlist-btn" id="wishlist-link" href="wishlist.html" aria-label="Favorites">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 3c0 4.5-9.5 12-9.5 12Z" /></svg>
+              <span class="cart-badge wishlist-badge is-empty">0</span>
+            </a>
+            <a class="icon-btn cart-btn" href="cart.html" aria-label="Cart">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg>
+              <span class="cart-badge is-empty">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-cats">
+        <div class="container header-cats__inner">
+          <div class="nav-item all-categories">
+            <button class="all-categories__btn" type="button">
+              <span class="bars"><i></i><i></i><i></i></span>
+              <span class="label">All Categories</span>
+              <span class="caret">&#9662;</span>
+            </button>
+            <div class="dropdown all-categories__menu">
+              <a href="products.html#tablets">Tablets</a>
+              <a href="products.html#capsules">Capsules</a>
+              <a href="products.html#syrups">Syrups</a>
+              <a href="products.html#injections">Injections</a>
+              <a href="products.html#ointments">Ointment/Gels</a>
+              <a href="products.html#eye-drops">Eye Drops</a>
+              <a href="products.html#protein-powder">Protein Powder</a>
+              <a href="products.html#new-products">New Products</a>
+            </div>
+          </div>
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="products.html">Products</a>
+            <a href="verify.html" aria-current="page">Verify Product</a>
+            <a href="index.html#manufacturing">3rd Party Manufacturing</a>
+            <a href="index.html#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero">
+        <div class="container">
+          <h1>Verify Product</h1>
+          <p><a href="index.html#home">Home</a> / Verify Product</p>
+        </div>
+      </section>
+
+      <section class="verify-section">
+        <div class="container verify-layout">
+          <div class="verify-card">
+            <div class="verify-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg>
+            </div>
+            <h2>Check your product's authenticity</h2>
+            <p class="verify-card__lead">Enter the unique verification code printed on your IronCore Pharma pack. Each genuine code works only once.</p>
+
+            <form id="verify-form" novalidate>
+              <label class="verify-field">
+                <span>Product code</span>
+                <input type="text" id="verify-code" inputmode="latin" autocomplete="off" placeholder="e.g. 48213907" aria-describedby="verify-result" />
+              </label>
+              <button class="btn btn-primary verify-submit" type="submit" id="verify-submit">Verify now</button>
+            </form>
+
+            <div class="verify-result" id="verify-result" role="status" aria-live="polite" hidden></div>
+          </div>
+
+          <aside class="verify-aside">
+            <h3>How it works</h3>
+            <ol class="verify-steps">
+              <li><strong>Find the code</strong> — look for the scratch/printed verification code on the product label or box.</li>
+              <li><strong>Enter it above</strong> — type the code exactly as printed and tap Verify.</li>
+              <li><strong>Read the result</strong> — a genuine, unused code shows <b>Verified</b>. A code that's unknown or already used is flagged.</li>
+            </ol>
+            <p class="verify-note">Because each code is single-use, a code that comes back as <b>already used</b> on a sealed pack may indicate a counterfeit. When in doubt, <a href="index.html#contact">contact us</a>.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="track">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="index.html#home">
+            <img src="img/logo.svg" alt="" />
+            <span><strong>IronCore</strong><small>Pharma</small></span>
+          </a>
+          <p>IronCore Pharma is a trusted pharmaceutical company offering effective medicines, franchise support, and third-party manufacturing coordination across India.</p>
+        </div>
+        <div>
+          <h3>Shortcut Links</h3>
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="products.html">Products</a>
+          <a href="verify.html">Verify Product</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div>
+          <h3>Product Categories</h3>
+          <a href="products.html#infusions">Infusions</a>
+          <a href="products.html#capsules">Capsules</a>
+          <a href="products.html#tablets">Tablets</a>
+          <a href="products.html#injections">Injections</a>
+        </div>
+        <div>
+          <h3>Our Address</h3>
+          <p>IronCore Pharma<br />Industrial Area, Phase-2<br />Panchkula, Haryana</p>
+          <a href="tel:+919056731984">+91-9056731984</a>
+          <a href="mailto:info@ironcorehealth.com">info@ironcorehealth.com</a>
+        </div>
+      </div>
+      <div class="container copyright">
+        <p>Copyright &copy; 2026 IronCore Pharma | All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script src="js/products-data.js?v=20" defer></script>
+    <script src="js/store.js?v=20" defer></script>
+    <script src="js/main.js?v=20" defer></script>
+    <script src="js/auth.js?v=20" defer></script>
+    <script src="js/verify.js?v=20" defer></script>
+  </body>
+</html>

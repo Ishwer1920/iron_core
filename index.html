@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IronCore Pharma | Pharma Franchise & Manufacturing</title>
+    <meta
+      name="description"
+      content="IronCore Pharma is a professional pharmaceutical franchise and manufacturing company with a complete product range."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=20" />
+  </head>
+  <body>
+    <div class="top-strip">
+      <div class="container top-strip__inner">
+        <p>IronCore Pharma | ISO 9001:2015 Certified Pharmaceutical Company</p>
+        <div class="top-strip__links">
+          <a href="tel:+919056731984">+91-9056731984</a>
+          <a href="mailto:info@ironcorehealth.com">info@ironcorehealth.com</a>
+        </div>
+      </div>
+    </div>
+
+    <header class="site-header" id="home">
+      <!-- Row 1: brand | search | icons -->
+      <div class="header-main">
+        <div class="container header-main__inner">
+          <a class="brand" href="index.html#home" aria-label="IronCore Pharma home">
+            <img src="img/logo.svg" alt="" />
+            <span>
+              <strong>IronCore</strong>
+              <small>Pharma</small>
+            </span>
+          </a>
+
+          <form class="site-search" role="search">
+            <input type="search" placeholder="Search for tablets, syrups, capsules..." aria-label="Search" />
+            <button type="submit" aria-label="Search">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+            </button>
+          </form>
+
+          <div class="header-icons">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <a class="icon-btn" id="account-link" href="login.html" aria-label="Account">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>
+            </a>
+            <a class="icon-btn wishlist-btn" id="wishlist-link" href="wishlist.html" aria-label="Favorites">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 3c0 4.5-9.5 12-9.5 12Z" /></svg>
+              <span class="cart-badge wishlist-badge is-empty">0</span>
+            </a>
+            <a class="icon-btn cart-btn" href="cart.html" aria-label="Cart">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg>
+              <span class="cart-badge is-empty">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: All Categories + nav -->
+      <div class="header-cats">
+        <div class="container header-cats__inner">
+          <div class="nav-item all-categories">
+            <button class="all-categories__btn" type="button">
+              <span class="bars"><i></i><i></i><i></i></span>
+              <span class="label">All Categories</span>
+              <span class="caret">&#9662;</span>
+            </button>
+            <div class="dropdown all-categories__menu">
+              <a href="products.html#tablets">Tablets</a>
+              <a href="products.html#capsules">Capsules</a>
+              <a href="products.html#syrups">Syrups</a>
+              <a href="products.html#dry-syrups">Dry Syrups</a>
+              <a href="products.html#injections">Injections</a>
+              <a href="products.html#infusions">Infusions</a>
+              <a href="products.html#ointments">Ointment/Gels</a>
+              <a href="products.html#eye-drops">Eye Drops</a>
+              <a href="products.html#effervescent-tablets">Effervescent Tablets</a>
+              <a href="products.html#gummies">Gummies</a>
+              <a href="products.html#pediatric-syrup">Pediatric Syrup</a>
+              <a href="products.html#protein-powder">Protein Powder</a>
+              <a href="products.html#respules">Respules</a>
+              <a href="products.html#sachet">Sachet</a>
+              <a href="products.html#new-products">New Products</a>
+            </div>
+          </div>
+
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="products.html">Products</a>
+            <a href="verify.html">Verify Product</a>
+            <a href="index.html#manufacturing">3rd Party Manufacturing</a>
+            <a href="index.html#divisions">Our Divisions</a>
+            <a href="index.html#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero zone: category sidebar | banner | promo stack -->
+      <section class="home-hero" aria-label="Featured">
+        <div class="container home-hero__grid">
+          <aside class="cat-sidebar" aria-label="Product categories">
+            <a href="products.html#tablets">Tablets</a>
+            <a href="products.html#capsules">Capsules</a>
+            <a href="products.html#syrups">Syrups</a>
+            <a href="products.html#dry-syrups">Dry Syrups</a>
+            <a href="products.html#injections">Injections</a>
+            <a href="products.html#ointments">Ointment/Gels</a>
+            <a href="products.html#eye-drops">Eye Drops</a>
+            <a href="products.html#protein-powder">Protein Powder</a>
+            <a href="products.html#gummies">Gummies</a>
+          </aside>
+
+          <div class="hero-slider">
+            <article class="hero-banner hero-slide is-active">
+              <div class="hero-banner__copy">
+                <p class="hero-banner__eyebrow">PCD Pharma Franchise Across India</p>
+                <h1>Power Your <span>Pharma</span> Business</h1>
+                <p>
+                  Reliable formulations, disciplined quality checks, and launch-ready
+                  franchise support — all backed by ISO-certified manufacturing.
+                </p>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="products.html">Explore Products</a>
+                  <a class="btn btn-light" href="#contact">Place A Query</a>
+                </div>
+              </div>
+              <div class="hero-banner__visual" aria-hidden="true">
+                <img src="img/hero-pharma.svg" alt="" />
+              </div>
+            </article>
+
+            <article class="hero-banner hero-slide">
+              <div class="hero-banner__copy">
+                <p class="hero-banner__eyebrow">ISO 9001:2015 Certified</p>
+                <h1>Quality You Can <span>Trust</span></h1>
+                <p>
+                  GMP-compliant manufacturing, clean professional packaging, and
+                  dependable batch documentation on every order.
+                </p>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="products.html">View Products</a>
+                  <a class="btn btn-light" href="#manufacturing">Our Standards</a>
+                </div>
+              </div>
+              <div class="hero-banner__visual" aria-hidden="true">
+                <img src="img/hero-lab.svg" alt="" />
+              </div>
+            </article>
+
+            <article class="hero-banner hero-slide">
+              <div class="hero-banner__copy">
+                <p class="hero-banner__eyebrow">Complete Therapeutic Range</p>
+                <h1>Tablets To <span>Injectables</span></h1>
+                <p>
+                  A broad catalogue across 15+ categories — tablets, syrups, capsules,
+                  injections and specialty care, ready for franchise expansion.
+                </p>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#categories">Browse Categories</a>
+                  <a class="btn btn-light" href="#contact">Enquire Now</a>
+                </div>
+              </div>
+              <div class="hero-banner__visual" aria-hidden="true">
+                <img src="img/quality-lab.svg" alt="" />
+              </div>
+            </article>
+
+            <div class="hero-dots" aria-label="Hero slide controls">
+              <button class="is-active" type="button" aria-label="Show slide 1"></button>
+              <button type="button" aria-label="Show slide 2"></button>
+              <button type="button" aria-label="Show slide 3"></button>
+            </div>
+          </div>
+
+          <div class="promo-stack">
+            <div class="promo-card">
+              <span class="promo-card__tag">Franchise</span>
+              <h3>Monopoly Rights Available</h3>
+              <a href="#contact">Enquire Now</a>
+            </div>
+            <div class="promo-card promo-card--pink">
+              <span class="promo-card__tag">Services</span>
+              <h3>3rd Party Manufacturing</h3>
+              <a href="#manufacturing">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shop by category -->
+      <section class="shop-cats" id="categories">
+        <div class="container">
+          <h2 class="shout">Shop By <span>Category</span></h2>
+          <div class="cat-circles">
+            <a class="cat-circle" href="products.html#tablets">
+              <span class="cat-circle__img"><img src="img/product-tablets.svg" alt="" /></span>
+              <span>Tablets</span>
+            </a>
+            <a class="cat-circle" href="products.html#capsules">
+              <span class="cat-circle__img"><img src="img/product-capsules.svg" alt="" /></span>
+              <span>Capsules</span>
+            </a>
+            <a class="cat-circle" href="products.html#syrups">
+              <span class="cat-circle__img"><img src="img/product-syrup.svg" alt="" /></span>
+              <span>Syrups</span>
+            </a>
+            <a class="cat-circle" href="products.html#injections">
+              <span class="cat-circle__img"><img src="img/product-injection.svg" alt="" /></span>
+              <span>Injections</span>
+            </a>
+            <a class="cat-circle" href="products.html#ointments">
+              <span class="cat-circle__img"><img src="img/product-ointment.svg" alt="" /></span>
+              <span>Ointments</span>
+            </a>
+            <a class="cat-circle" href="products.html#eye-drops">
+              <span class="cat-circle__img"><img src="img/product-eye-drops.svg" alt="" /></span>
+              <span>Eye Drops</span>
+            </a>
+            <a class="cat-circle" href="products.html#dry-syrups">
+              <span class="cat-circle__img"><img src="img/product-dry-syrup.svg" alt="" /></span>
+              <span>Dry Syrups</span>
+            </a>
+            <a class="cat-circle" href="products.html#infusions">
+              <span class="cat-circle__img"><img src="img/product-infusion.svg" alt="" /></span>
+              <span>Infusions</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Promo banner grid -->
+      <section class="promo-banners">
+        <div class="container promo-banners__grid">
+          <a class="promo-banner" href="products.html#protein-powder">
+            <span>Nutrition</span>
+            <h3>Protein &amp; Supplements</h3>
+            <span class="promo-banner__cta">Shop Now</span>
+          </a>
+          <a class="promo-banner" href="products.html#injections">
+            <span>Critical Care</span>
+            <h3>Injectables Range</h3>
+            <span class="promo-banner__cta">Shop Now</span>
+          </a>
+          <a class="promo-banner" href="products.html#ointments">
+            <span>Skin Care</span>
+            <h3>Derma &amp; Ointments</h3>
+            <span class="promo-banner__cta">Shop Now</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Featured products (real Iron Core line) -->
+      <section class="featured-section" id="featured">
+        <div class="container">
+          <h2 class="shout">Featured <span>Products</span></h2>
+          <div class="product-grid" id="featured-products"></div>
+          <a class="btn btn-primary featured-section__all" href="products.html#sports-nutrition">View All Products</a>
+        </div>
+      </section>
+
+      <section class="intro-section" id="about">
+        <div class="container intro-grid">
+          <article class="content-card">
+            <p class="section-kicker">IronCore Pharma</p>
+            <h2>Precision-led pharmaceutical support for ambitious partners.</h2>
+            <p>
+              IronCore Pharma brings together a focused product range, clean distribution
+              practices, and responsive franchise support for partners entering high-demand
+              Pharma markets.
+            </p>
+            <p>
+              Our catalogue covers tablets, capsules, liquid syrups, dry syrups, injections,
+              ointments, protein supplements, ayurvedic care, derma, ophthalmic, cardiac diabetic,
+              and pediatric segments.
+            </p>
+            <p>
+              Each product line is planned around practical market needs, consistent availability,
+              and documentation that helps associates build trust with doctors, chemists, and
+              Pharma customers.
+            </p>
+          </article>
+
+          <aside class="query-card" id="contact">
+            <h3>Contact Us</h3>
+            <p>Share your requirement and our franchise desk will call you back.</p>
+            <form>
+              <label>
+                <span>Name</span>
+                <input type="text" placeholder="Your name" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" placeholder="you@example.com" />
+              </label>
+              <label>
+                <span>Contact</span>
+                <input type="tel" placeholder="Mobile number" />
+              </label>
+              <label>
+                <span>Location</span>
+                <input type="text" placeholder="City / State" />
+              </label>
+              <label>
+                <span>Service</span>
+                <select>
+                  <option>PCD Pharma Franchise</option>
+                  <option>Third Party Manufacturing</option>
+                  <option>Product Catalogue</option>
+                  <option>Marketing Support</option>
+                </select>
+              </label>
+              <label class="full">
+                <span>Query</span>
+                <textarea placeholder="Tell us what you need"></textarea>
+              </label>
+              <button class="btn btn-primary" type="submit">Send Enquiry</button>
+            </form>
+          </aside>
+        </div>
+      </section>
+
+      <section class="why-section" id="manufacturing">
+        <div class="container why-grid">
+          <div class="section-heading align-left">
+            <p class="section-kicker">Why Choose Us</p>
+            <h2>Built for partners who need quality, speed, and clean execution.</h2>
+            <p>
+              Our operating style is practical: organized supply, professional packaging, responsive
+              communication, and transparent support from enquiry to dispatch.
+            </p>
+          </div>
+
+          <div class="why-cards">
+            <article>
+              <div class="icon">10+</div>
+              <h3>Years Experience</h3>
+              <p>Experienced product planning with franchise-friendly market guidance.</p>
+              <a href="#contact">Read more</a>
+            </article>
+            <article>
+              <div class="icon">GMP</div>
+              <h3>Best Materials</h3>
+              <p>Carefully sourced inputs and manufacturing through compliant units.</p>
+              <a href="#contact">Read more</a>
+            </article>
+            <article>
+              <div class="icon">ISO</div>
+              <h3>Professional Standards</h3>
+              <p>Consistent presentation, documentation, and product portfolio control.</p>
+              <a href="#contact">Read more</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="divisions-section" id="divisions">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-kicker">Our Divisions</p>
+            <h2>Dedicated ranges for focused market growth.</h2>
+          </div>
+          <div class="division-row">
+            <article>Dental Range</article>
+            <article>Cardiac Diabetic</article>
+            <article>Ayurveda Range</article>
+            <article>Gynae Range</article>
+            <article>Derma Range</article>
+            <article>Ophthalmic Range</article>
+          </div>
+        </div>
+      </section>
+
+      <section class="franchise-section">
+        <div class="container franchise-grid">
+          <div>
+            <p class="section-kicker">Best For PCD Franchise</p>
+            <h2>Stronger infrastructure, smoother onboarding, better market confidence.</h2>
+            <p>
+              IronCore Pharma is shaped for franchise partners who want broad products, smart
+              margins, faster communication, and practical promotional material without scattered
+              follow-up.
+            </p>
+            <ul class="benefit-list">
+              <li>World-class infrastructure access with modern machinery.</li>
+              <li>Frequent new product launches across fast-moving segments.</li>
+              <li>Monopoly rights for selected areas with clear business terms.</li>
+              <li>Economic investment plans with practical ROI planning.</li>
+              <li>Promotional tools and strategic marketing support.</li>
+              <li>Transparent coordination and 24x7 partner assistance.</li>
+            </ul>
+          </div>
+          <div class="lab-card" aria-hidden="true">
+            <img src="img/quality-lab.svg" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial-section">
+        <div class="container testimonial-grid">
+          <figure>
+            <blockquote>
+              We believe every formulation should carry confidence from manufacturing to market.
+              That means quality inputs, clear documentation, and practical partner support.
+            </blockquote>
+            <figcaption>Quality Desk, IronCore Pharma</figcaption>
+          </figure>
+          <figure>
+            <blockquote>
+              When we plan the future, we plan it around reliable Pharma access and stronger
+              franchise relationships.
+            </blockquote>
+            <figcaption>Partner Success Team</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="track">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="#home">
+            <img src="img/logo.svg" alt="" />
+            <span>
+              <strong>IronCore</strong>
+              <small>Pharma</small>
+            </span>
+          </a>
+          <p>
+            IronCore Pharma is a trusted pharmaceutical company offering effective medicines,
+            franchise support, and third-party manufacturing coordination across India.
+          </p>
+        </div>
+
+        <div>
+          <h3>Shortcut Links</h3>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="products.html">Products</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div>
+          <h3>Product Categories</h3>
+          <a href="products.html#infusions">Infusions</a>
+          <a href="products.html#capsules">Capsules</a>
+          <a href="products.html#dry-syrups">Dry Syrups</a>
+          <a href="products.html#tablets">Tablets</a>
+          <a href="products.html#injections">Injections</a>
+          <a href="products.html#eye-drops">Eye Drops</a>
+        </div>
+
+        <div>
+          <h3>Our Address</h3>
+          <p>
+            IronCore Pharma<br />
+            Industrial Area, Phase-2<br />
+            Panchkula, Haryana
+          </p>
+          <a href="tel:+919056731984">+91-9056731984</a>
+          <a href="mailto:info@ironcorehealth.com">info@ironcorehealth.com</a>
+        </div>
+      </div>
+      <div class="container copyright">
+        <p>Copyright &copy; 2026 IronCore Pharma | All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <div class="floating-actions" aria-label="Quick actions">
+      <a class="float-call" href="tel:+919056731984">Call Us</a>
+      <button class="float-query" type="button" data-open-query>Send Enquiry</button>
+    </div>
+
+    <div class="modal" aria-hidden="true">
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal__close" type="button" data-close-query aria-label="Close enquiry form">
+          &times;
+        </button>
+        <h2 id="modal-title">Place A Query</h2>
+        <form>
+          <label>Name:<input type="text" /></label>
+          <label>E-mail:<input type="email" /></label>
+          <label>Number:<input type="tel" /></label>
+          <label>Location:<input type="text" /></label>
+          <label>
+            Services:
+            <select>
+              <option>PCD Pharma Franchise</option>
+              <option>Third Party Manufacturing</option>
+              <option>Product Catalogue</option>
+            </select>
+          </label>
+          <label>Query:<textarea></textarea></label>
+          <button class="btn btn-primary" type="submit">Submit Query</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/products-data.js?v=20"></script>
+    <script src="js/store.js?v=20"></script>
+    <script src="js/main.js?v=20"></script>
+    <script src="js/banners.js?v=20"></script>
+    <script src="js/auth.js?v=20"></script>
+  </body>
+</html>

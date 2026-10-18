@@ -1,0 +1,26 @@
+<svg width="640" height="430" viewBox="0 0 640 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="70" y="72" width="430" height="260" rx="36" fill="#ffffff" opacity=".95"/>
+  <rect x="112" y="115" width="168" height="176" rx="20" fill="#E9F7F4"/>
+  <rect x="136" y="140" width="120" height="16" rx="8" fill="#0C9B8E"/>
+  <rect x="136" y="168" width="92" height="10" rx="5" fill="#8BB9B4"/>
+  <rect x="136" y="214" width="52" height="52" rx="12" fill="#F08222"/>
+  <path d="M162 225V255M147 240H177" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <rect x="306" y="118" width="160" height="174" rx="22" fill="#163A5F"/>
+  <rect x="330" y="144" width="112" height="16" rx="8" fill="#ffffff"/>
+  <rect x="330" y="172" width="80" height="10" rx="5" fill="#B8DDE0"/>
+  <circle cx="386" cy="235" r="39" fill="#0C9B8E"/>
+  <path d="M386 211V259M362 235H410" stroke="white" stroke-width="10" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <rect x="408" y="226" width="118" height="132" rx="24" fill="#FDFEFE"/>
+    <rect x="436" y="204" width="63" height="42" rx="12" fill="#DCE8EE"/>
+    <rect x="434" y="260" width="66" height="17" rx="8.5" fill="#0C9B8E"/>
+    <rect x="445" y="291" width="45" height="10" rx="5" fill="#90B6BC"/>
+  </g>
+  <circle cx="526" cy="106" r="42" fill="#F08222" opacity=".88"/>
+  <circle cx="102" cy="326" r="26" fill="#BEEAE4"/>
+  <defs>
+    <filter id="shadow" x="386" y="186" width="162" height="194" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="13" flood-color="#10253A" flood-opacity=".25"/>
+    </filter>
+  </defs>
+</svg>

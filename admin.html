@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | IronCore Pharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=20" />
+  </head>
+  <body class="admin-body">
+    <header class="admin-topbar">
+      <div class="container admin-topbar__inner">
+        <a class="brand" href="index.html">
+          <img src="img/logo.svg" alt="" />
+          <span><strong>IronCore</strong><small>Admin</small></span>
+        </a>
+        <div class="admin-topbar__right">
+          <span class="admin-who"><span id="admin-email">&hellip;</span> <span class="tag tag--admin" id="admin-role"></span></span>
+          <a class="btn btn-light" href="index.html">View store</a>
+          <button class="btn btn-primary" id="admin-logout" type="button">Log out</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-shell" id="admin-shell" hidden>
+      <div class="admin-tabs" role="tablist">
+        <button class="admin-tab is-active" data-tab="overview" type="button">Overview</button>
+        <button class="admin-tab" data-tab="products" type="button">Products</button>
+        <button class="admin-tab" data-tab="banners" type="button">Banners</button>
+        <button class="admin-tab" data-tab="orders" type="button">Orders</button>
+        <button class="admin-tab" data-tab="reviews" type="button">Reviews <span class="tab-pill" id="reviews-pending-pill" hidden></span></button>
+        <button class="admin-tab" data-tab="verification" type="button">Verification</button>
+        <button class="admin-tab" data-tab="users" type="button">Users</button>
+        <button class="admin-tab" data-tab="enquiries" type="button">Enquiries</button>
+        <button class="admin-tab" data-tab="settings" type="button">Settings</button>
+      </div>
+
+      <!-- Overview -->
+      <section class="admin-panel is-active" id="tab-overview">
+        <h2 class="shout align-left">Store <span>Overview</span></h2>
+        <div class="stat-grid" id="overview-cards"></div>
+      </section>
+
+      <!-- Products -->
+      <section class="admin-panel" id="tab-products" hidden>
+        <div class="admin-panel__head">
+          <h2 class="shout align-left">Manage <span>Products</span></h2>
+          <button class="btn btn-primary" id="add-product-btn" type="button">+ Add product</button>
+        </div>
+
+        <form class="admin-form" id="product-form" hidden>
+          <h3 id="product-form-title">Add product</h3>
+          <div class="admin-form__grid">
+            <label>Slug (id)<input type="text" id="p-slug" placeholder="e.g. mk-677" /></label>
+            <div class="field">
+              <label for="p-category">Category</label>
+              <div class="cat-row">
+                <select id="p-category"></select>
+                <button type="button" class="mini-btn" id="add-cat-btn">+ New</button>
+              </div>
+              <div class="new-cat" id="new-cat" hidden>
+                <input type="text" id="new-cat-name" placeholder="New category name" />
+                <button type="button" class="mini-btn" id="new-cat-save">Add</button>
+                <button type="button" class="mini-btn" id="new-cat-cancel">Cancel</button>
+              </div>
+            </div>
+            <label>Name<input type="text" id="p-name" /></label>
+            <label>Pack size<input type="text" id="p-packSize" placeholder="60 Tablets" /></label>
+            <label>Price<input type="text" id="p-price" placeholder="Price on request" /></label>
+            <label>Rating<input type="number" id="p-rating" step="0.1" min="0" max="5" placeholder="4.8" /></label>
+            <label>Stock<input type="text" id="p-stock" placeholder="In stock" /></label>
+            <label class="admin-form__full">Composition<input type="text" id="p-composition" /></label>
+
+            <div class="admin-form__full img-picker">
+              <div class="img-picker__head">
+                <strong>Product images</strong>
+                <label class="btn btn-light img-upload-btn">
+                  Upload image<input type="file" id="img-upload-input" accept="image/*" hidden />
+                </label>
+              </div>
+              <p class="img-picker__hint">Click an image to add/remove it from the gallery. Click <b>&#9733;</b> to set the main image (shown first).</p>
+              <div class="img-grid" id="image-grid"></div>
+              <input type="hidden" id="p-image" />
+              <input type="hidden" id="p-images" />
+            </div>
+
+            <label class="admin-form__full">Description<textarea id="p-description" rows="3"></textarea></label>
+          </div>
+          <p class="admin-msg" id="product-msg"></p>
+          <div class="admin-form__actions">
+            <button class="btn btn-primary" type="submit" id="product-save">Save product</button>
+            <button class="btn btn-light" type="button" id="product-cancel">Cancel</button>
+          </div>
+        </form>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Pack</th><th>Price</th><th>Rating</th><th></th></tr></thead>
+            <tbody id="products-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Banners -->
+      <section class="admin-panel" id="tab-banners" hidden>
+        <div class="admin-panel__head">
+          <h2 class="shout align-left">Home <span>Banners</span></h2>
+          <div class="banner-add-actions">
+            <button class="btn btn-light" id="add-hero-btn" type="button">+ Hero banner</button>
+            <button class="btn btn-light" id="add-promo-btn" type="button">+ Promo banner</button>
+          </div>
+        </div>
+        <p class="admin-note">Hero banners scroll in the big slider; promo banners are the two cards on the right. Each can use an image or a video, an optional button and link. Drag order with the up/down arrows.</p>
+
+        <!-- Banner form -->
+        <form class="admin-form" id="banner-form" hidden>
+          <h3 id="banner-form-title">Add banner</h3>
+          <div class="admin-form__grid">
+            <input type="hidden" id="b-id" />
+            <input type="hidden" id="b-zone" />
+
+            <div class="admin-form__full media-picker">
+              <div class="img-picker__head">
+                <strong>Banner media (image or video)</strong>
+              </div>
+              <p class="img-picker__hint">Add a photo or video from your <b>device</b> (computer file browser or phone photo gallery), pick one you've already uploaded, or paste a link.</p>
+              <div class="media-picker__row">
+                <div class="media-preview" id="banner-preview"><span class="media-preview__empty">No media selected</span></div>
+                <div class="media-picker__controls">
+                  <div class="media-picker__buttons">
+                    <label class="btn btn-primary media-device-btn">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4" /><path d="m7 9 5-5 5 5" /><path d="M20 16v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2" /></svg>
+                      Upload from device
+                      <input type="file" id="banner-upload-input" accept="image/*,video/*" hidden />
+                    </label>
+                    <button type="button" class="btn btn-light" id="banner-gallery-toggle">Choose from gallery</button>
+                  </div>
+                  <label>Media URL
+                    <input type="text" id="b-media-url" placeholder="img/banners/your-file.jpg or https://..." />
+                  </label>
+                  <label>Type
+                    <select id="b-media-type">
+                      <option value="image">Image</option>
+                      <option value="video">Video</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class="media-gallery" id="banner-gallery" hidden></div>
+            </div>
+
+            <label>Eyebrow / tag<input type="text" id="b-eyebrow" placeholder="e.g. Franchise" /></label>
+            <label>Title<input type="text" id="b-title" placeholder="e.g. Power Your Pharma Business" /></label>
+            <label class="banner-hero-only">Highlight word<input type="text" id="b-title-highlight" placeholder="word within the title to colour" /></label>
+            <label class="admin-form__full banner-hero-only">Subtitle<textarea id="b-subtitle" rows="2"></textarea></label>
+            <label>Banner link (optional)<input type="text" id="b-link-url" placeholder="where the banner click goes" /></label>
+            <label class="banner-hero-only">Slide duration (seconds)<input type="number" id="b-duration" min="1" max="60" value="6" /></label>
+
+            <div class="admin-form__full banner-button-block">
+              <label class="switch-label"><input type="checkbox" id="b-button-enabled" /> Show a button on this banner</label>
+              <div class="banner-button-fields" id="banner-button-fields" hidden>
+                <label>Button text<input type="text" id="b-button-text" placeholder="e.g. Explore Products" /></label>
+                <label>Button link<input type="text" id="b-button-link" placeholder="e.g. products.html" /></label>
+              </div>
+            </div>
+
+            <label class="admin-form__full switch-label"><input type="checkbox" id="b-active" checked /> Active (visible on the site)</label>
+          </div>
+          <p class="admin-msg" id="banner-msg"></p>
+          <div class="admin-form__actions">
+            <button class="btn btn-primary" type="submit" id="banner-save">Save banner</button>
+            <button class="btn btn-light" type="button" id="banner-cancel">Cancel</button>
+          </div>
+        </form>
+
+        <h3 class="admin-subhead">Hero slider</h3>
+        <div class="banner-list" id="hero-list"></div>
+
+        <h3 class="admin-subhead">Promo cards (right side)</h3>
+        <div class="banner-list" id="promo-list"></div>
+      </section>
+
+      <!-- Orders -->
+      <section class="admin-panel" id="tab-orders" hidden>
+        <h2 class="shout align-left">Customer <span>Orders</span></h2>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Date</th><th>Order #</th><th>Customer</th><th>Items</th><th>Payment</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section class="admin-panel" id="tab-reviews" hidden>
+        <div class="admin-panel__head">
+          <h2 class="shout align-left">Product <span>Reviews</span></h2>
+          <div class="review-filter" id="review-filter">
+            <button class="mini-btn is-active" data-filter="all" type="button">All</button>
+            <button class="mini-btn" data-filter="pending" type="button">Pending</button>
+            <button class="mini-btn" data-filter="approved" type="button">Approved</button>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Date</th><th>Product</th><th>Reviewer</th><th>Rating</th><th>Review</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="reviews-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Verification codes -->
+      <section class="admin-panel" id="tab-verification" hidden>
+        <h2 class="shout align-left">Product <span>Authentication</span></h2>
+        <p class="admin-note">Create the authentication codes printed on your products. Customers enter a code on the <b>Verify Product</b> page — a matching, unused code shows “verified”, anything else is flagged. Each code works once.</p>
+
+        <div class="stat-grid" id="codes-stats"></div>
+
+        <div class="codes-grid">
+          <div class="admin-form codes-card">
+            <h3>Generate codes</h3>
+            <p class="codes-card__hint">Create a batch of random unique codes (e.g. 60000 codes of 8 digits).</p>
+            <div class="codes-row">
+              <label>How many<input type="number" id="gen-count" min="1" max="200000" value="60000" /></label>
+              <label>Digits<input type="number" id="gen-digits" min="4" max="12" value="8" /></label>
+              <button class="btn btn-primary" type="button" id="gen-btn">Generate</button>
+            </div>
+          </div>
+
+          <div class="admin-form codes-card">
+            <h3>Add codes manually</h3>
+            <p class="codes-card__hint">Paste codes separated by spaces, commas or new lines.</p>
+            <textarea id="add-codes" rows="4" placeholder="48213907&#10;59120034&#10;..."></textarea>
+            <button class="btn btn-primary" type="button" id="add-btn">Add codes</button>
+          </div>
+
+          <div class="admin-form codes-card">
+            <h3>Upload a code file</h3>
+            <p class="codes-card__hint">Upload a .txt or .csv file of codes from your desktop.</p>
+            <label class="btn btn-light media-device-btn">
+              Choose file from desktop
+              <input type="file" id="codes-file" accept=".txt,.csv,text/plain,text/csv" hidden />
+            </label>
+            <span class="codes-file-name" id="codes-file-name"></span>
+            <button class="btn btn-primary" type="button" id="upload-codes-btn">Upload file</button>
+          </div>
+
+          <div class="admin-form codes-card">
+            <h3>Check a code</h3>
+            <p class="codes-card__hint">See whether a code exists and if it has been used.</p>
+            <div class="codes-row">
+              <input type="text" id="check-code" placeholder="Enter a code" />
+              <button class="btn btn-light" type="button" id="check-btn">Check</button>
+            </div>
+            <div class="check-result" id="check-result"></div>
+          </div>
+        </div>
+
+        <p class="admin-msg" id="codes-msg"></p>
+
+        <div class="codes-actions">
+          <a class="btn btn-primary" id="export-codes-pdf" href="/api/admin/codes/export.pdf">Export all codes (PDF)</a>
+          <a class="btn btn-light" id="export-codes" href="/api/admin/codes/export">Export all codes (CSV)</a>
+          <button class="btn btn-light" type="button" id="clear-used-btn">Clear used codes</button>
+          <button class="btn btn-light mini-btn--danger" type="button" id="clear-all-btn">Delete all codes</button>
+        </div>
+
+        <h3 class="admin-subhead">Recent verifications</h3>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Code</th><th>Verified at</th></tr></thead>
+            <tbody id="codes-recent-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Users -->
+      <section class="admin-panel" id="tab-users" hidden>
+        <h2 class="shout align-left">Registered <span>Users</span></h2>
+        <p class="admin-note" id="users-note"></p>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>ID</th><th>Email</th><th>Role</th><th>Active</th><th>Signed up</th><th>Actions</th></tr></thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Enquiries -->
+      <section class="admin-panel" id="tab-enquiries" hidden>
+        <h2 class="shout align-left">Orders &amp; <span>Enquiries</span></h2>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Contact</th><th>Service</th><th>Message</th><th>From</th></tr></thead>
+            <tbody id="enquiries-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section class="admin-panel" id="tab-settings" hidden>
+        <h2 class="shout align-left">Site <span>Maintenance</span></h2>
+        <div class="admin-form" style="max-width:560px">
+          <div class="maint-row">
+            <label class="switch" title="Toggle maintenance mode">
+              <input type="checkbox" id="maintenance-toggle" />
+              <span class="switch__slider"></span>
+            </label>
+            <div class="maint-row__text">
+              <strong id="maintenance-state">Loading&hellip;</strong>
+              <p class="admin-note">When <b>ON</b>, visitors see the &ldquo;We&rsquo;ll be back soon&rdquo; page. You (admin) can still use the store and this panel while it&rsquo;s on.</p>
+            </div>
+          </div>
+          <p class="admin-msg" id="maintenance-msg"></p>
+          <a class="btn btn-light" href="maintenance.html" target="_blank" rel="noopener">Preview maintenance page</a>
+        </div>
+
+        <h2 class="shout align-left" style="margin-top:44px">My <span>Password</span></h2>
+        <form class="admin-form" id="pw-form" style="max-width:460px">
+          <div class="admin-form__grid" style="grid-template-columns:1fr">
+            <label>Current password<input type="password" id="pw-current" autocomplete="current-password" /></label>
+            <label>New password<input type="password" id="pw-new" autocomplete="new-password" /></label>
+            <label>Confirm new password<input type="password" id="pw-confirm" autocomplete="new-password" /></label>
+          </div>
+          <p class="admin-msg" id="pw-msg"></p>
+          <div class="admin-form__actions">
+            <button class="btn btn-primary" type="submit">Change password</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div class="admin-gate" id="admin-gate">Checking access&hellip;</div>
+
+    <script src="js/admin.js?v=20"></script>
+  </body>
+</html>
