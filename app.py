@@ -417,12 +417,22 @@ def maintenance_is_on():
     return get_setting("maintenance", "0") == "1"
 
 
+# Default email kept; phone intentionally blank + hidden until an admin sets it.
+def contact_info():
+    return {
+        "phone": get_setting("contact_phone", ""),
+        "email": get_setting("contact_email", "info@ironcorehealth.com"),
+        "phone_visible": get_setting("contact_phone_visible", "0") == "1",
+        "email_visible": get_setting("contact_email_visible", "1") == "1",
+    }
+
+
 # Paths that must stay reachable while the site is in maintenance so an admin
 # can still sign in and switch it back off, and so the maintenance page renders.
 _MAINT_ALLOW_PREFIXES = ("/admin", "/api/admin", "/css/", "/js/", "/img/", "/fonts/")
 _MAINT_ALLOW_EXACT = {
     "/login.html", "/maintenance.html", "/favicon.ico",
-    "/api/login", "/api/logout", "/api/me", "/api/maintenance",
+    "/api/login", "/api/logout", "/api/me", "/api/maintenance", "/api/contact",
 }
 
 
@@ -544,10 +554,25 @@ def api_maintenance():
     return jsonify(active=maintenance_is_on(), is_admin=is_admin_role(current_user()))
 
 
+@app.get("/api/contact")
+def api_contact():
+    """Public contact info for the storefront. Only exposes a value when the
+    admin has marked it visible and it isn't blank."""
+    c = contact_info()
+    return jsonify(
+        phone=c["phone"] if (c["phone_visible"] and c["phone"]) else "",
+        email=c["email"] if (c["email_visible"] and c["email"]) else "",
+    )
+
+
 @app.get("/api/admin/settings")
 @admin_required
 def admin_get_settings():
-    return jsonify(maintenance=maintenance_is_on())
+    c = contact_info()
+    return jsonify(maintenance=maintenance_is_on(),
+                   contact_phone=c["phone"], contact_email=c["email"],
+                   contact_phone_visible=c["phone_visible"],
+                   contact_email_visible=c["email_visible"])
 
 
 @app.post("/api/admin/settings/maintenance")
@@ -556,6 +581,20 @@ def admin_set_maintenance():
     d = request.get_json(silent=True) or {}
     set_setting("maintenance", "1" if d.get("active") else "0")
     return jsonify(ok=True, active=maintenance_is_on())
+
+
+@app.post("/api/admin/settings/contact")
+@admin_required
+def admin_set_contact():
+    d = request.get_json(silent=True) or {}
+    set_setting("contact_phone", (d.get("phone") or "").strip())
+    set_setting("contact_email", (d.get("email") or "").strip())
+    set_setting("contact_phone_visible", "1" if d.get("phone_visible") else "0")
+    set_setting("contact_email_visible", "1" if d.get("email_visible") else "0")
+    c = contact_info()
+    return jsonify(ok=True, contact_phone=c["phone"], contact_email=c["email"],
+                   contact_phone_visible=c["phone_visible"],
+                   contact_email_visible=c["email_visible"])
 
 
 @app.post("/api/verify")
@@ -883,6 +922,54 @@ def admin_upload_image():
     # Product images get an automatic clean white background (AI cutout).
     whitened = whiten_to_white_bg(dest)
     return jsonify(ok=True, path=f"img/products/{name}", whitened=whitened), 201
+
+
+@app.delete("/api/admin/images")
+@admin_required
+def admin_delete_image():
+    """Permanently delete an image file from the img/ tree (used by the gallery's
+    manual delete button). Also strips the image from any product that referenced
+    it so nothing points at a now-missing file."""
+    d = request.get_json(silent=True) or {}
+    rel = (d.get("path") or request.args.get("path") or "").strip().replace("\\", "/")
+    if not rel:
+        return jsonify(error="No image path given."), 400
+    if not rel.startswith("img/") or ".." in rel.split("/"):
+        return jsonify(error="That file can't be deleted from here."), 400
+    if os.path.splitext(rel)[1].lower() not in IMAGE_EXTS:
+        return jsonify(error="Only image files can be deleted here."), 400
+    abs_path = os.path.abspath(os.path.join(BASE_DIR, rel))
+    # Guard against path traversal: the file must stay inside BASE_DIR/img.
+    try:
+        inside = os.path.commonpath([abs_path, IMG_DIR]) == IMG_DIR
+    except ValueError:
+        inside = False
+    if not inside:
+        return jsonify(error="That file can't be deleted from here."), 400
+    if not os.path.isfile(abs_path):
+        return jsonify(error="Image not found."), 404
+    try:
+        os.remove(abs_path)
+    except OSError as e:
+        return jsonify(error=f"Could not delete the file: {e}"), 500
+    # Drop the deleted image from any product that used it, then refresh catalog.
+    affected = 0
+    with db() as conn:
+        for row in conn.execute("SELECT slug, image, images_json FROM products").fetchall():
+            try:
+                imgs = json.loads(row["images_json"] or "[]")
+            except (ValueError, TypeError):
+                imgs = []
+            if rel not in imgs and row["image"] != rel:
+                continue
+            imgs = [i for i in imgs if i != rel]
+            main = imgs[0] if (row["image"] == rel and imgs) else ("" if row["image"] == rel else row["image"])
+            conn.execute("UPDATE products SET image = ?, images_json = ? WHERE slug = ?",
+                         (main, json.dumps(imgs), row["slug"]))
+            affected += 1
+    if affected:
+        regenerate_products_js()
+    return jsonify(ok=True, path=rel, products_updated=affected)
 
 
 # ----------------------------------------------------------------------------

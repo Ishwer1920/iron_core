@@ -114,6 +114,7 @@
       const main = picker.main === p;
       return '<div class="img-cell' + (sel ? " is-sel" : "") + (main ? " is-main" : "") + '" data-path="' + esc(p) + '">' +
         '<img src="' + esc(p) + '" alt="" loading="lazy" onerror="this.closest(\'.img-cell\').style.display=\'none\'">' +
+        '<button type="button" class="img-del" data-del="' + esc(p) + '" title="Delete image from server">&times;</button>' +
         '<button type="button" class="img-star" data-main="' + esc(p) + '" title="Set as main">&#9733;</button>' +
         (main ? '<span class="img-badge">Main</span>' : (sel ? '<span class="img-badge img-badge--sel">In gallery</span>' : "")) +
         "</div>";
@@ -124,6 +125,22 @@
     el("image-grid").querySelectorAll(".img-star").forEach(function (b) {
       b.addEventListener("click", function (e) { e.stopPropagation(); setMain(b.dataset.main); });
     });
+    el("image-grid").querySelectorAll(".img-del").forEach(function (b) {
+      b.addEventListener("click", function (e) { e.stopPropagation(); deleteImage(b.dataset.del); });
+    });
+  }
+  async function deleteImage(path) {
+    if (!window.confirm("Delete this image permanently from the server?\n\n" + path)) return;
+    const r = await api("/api/admin/images", "DELETE", { path: path });
+    if (!r.ok) { alert((r.data && r.data.error) || "Could not delete the image."); return; }
+    const i = allImages.indexOf(path);
+    if (i >= 0) allImages.splice(i, 1);
+    const s = picker.selected.indexOf(path);
+    if (s >= 0) {
+      picker.selected.splice(s, 1);
+      if (picker.main === path) picker.main = picker.selected[0] || "";
+    }
+    syncPicker();
   }
   function wireUpload() {
     el("img-upload-input").addEventListener("change", function () {
@@ -742,9 +759,39 @@
       state.style.color = active ? "#c0392b" : "#2fae57";
     }
   }
+  function paintContact(d) {
+    if (el("contact-phone")) el("contact-phone").value = d.contact_phone || "";
+    if (el("contact-email")) el("contact-email").value = d.contact_email || "";
+    if (el("contact-phone-visible")) el("contact-phone-visible").checked = !!d.contact_phone_visible;
+    if (el("contact-email-visible")) el("contact-email-visible").checked = !!d.contact_email_visible;
+  }
   async function loadMaintenance() {
     const r = await api("/api/admin/settings");
-    if (r.ok) paintMaintenance(r.data.maintenance);
+    if (r.ok) { paintMaintenance(r.data.maintenance); paintContact(r.data); }
+  }
+  function wireContact() {
+    const form = el("contact-form");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const msg = el("contact-msg"); msg.className = "admin-msg";
+      const body = {
+        phone: el("contact-phone").value.trim(),
+        email: el("contact-email").value.trim(),
+        phone_visible: el("contact-phone-visible").checked,
+        email_visible: el("contact-email-visible").checked,
+      };
+      api("/api/admin/settings/contact", "POST", body).then(function (r) {
+        if (r.ok) {
+          paintContact(r.data);
+          msg.className = "admin-msg is-ok";
+          msg.textContent = "Contact details saved — they update across the website.";
+        } else {
+          msg.className = "admin-msg is-error";
+          msg.textContent = (r.data && r.data.error) || "Could not save contact details.";
+        }
+      });
+    });
   }
   function wireMaintenance() {
     const box = el("maintenance-toggle");
@@ -773,6 +820,7 @@
   /* ---------- settings (change own password) ---------- */
   function wireSettings() {
     wireMaintenance();
+    wireContact();
     el("pw-form").addEventListener("submit", function (e) {
       e.preventDefault();
       const cur = el("pw-current").value, nw = el("pw-new").value, cf = el("pw-confirm").value;

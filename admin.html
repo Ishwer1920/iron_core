@@ -83,7 +83,7 @@
                   Upload image<input type="file" id="img-upload-input" accept="image/*" hidden />
                 </label>
               </div>
-              <p class="img-picker__hint">Click an image to add/remove it from the gallery. Click <b>&#9733;</b> to set the main image (shown first).</p>
+              <p class="img-picker__hint">Click an image to add/remove it from the gallery. Click <b>&#9733;</b> to set the main image (shown first). Hover an image and click <b>&times;</b> (top-left) to permanently delete it from the server.</p>
               <div class="img-grid" id="image-grid"></div>
               <input type="hidden" id="p-image" />
               <input type="hidden" id="p-images" />
@@ -320,6 +320,21 @@
           <a class="btn btn-light" href="maintenance.html" target="_blank" rel="noopener">Preview maintenance page</a>
         </div>
 
+        <h2 class="shout align-left" style="margin-top:44px">Contact <span>Details</span></h2>
+        <form class="admin-form" id="contact-form" style="max-width:560px">
+          <p class="admin-note">The phone number and email shown in the top bar, footer and &ldquo;Call Us&rdquo; button across the website. Untick <b>Show on website</b> to hide one without deleting it. A blank or hidden value simply does not appear.</p>
+          <div class="admin-form__grid" style="grid-template-columns:1fr">
+            <label>Phone number<input type="text" id="contact-phone" placeholder="+91-9056731984" /></label>
+            <label class="switch-inline"><input type="checkbox" id="contact-phone-visible" /> <span>Show phone on website</span></label>
+            <label>Email address<input type="email" id="contact-email" placeholder="info@ironcorehealth.com" /></label>
+            <label class="switch-inline"><input type="checkbox" id="contact-email-visible" /> <span>Show email on website</span></label>
+          </div>
+          <p class="admin-msg" id="contact-msg"></p>
+          <div class="admin-form__actions">
+            <button class="btn btn-primary" type="submit">Save contact details</button>
+          </div>
+        </form>
+
         <h2 class="shout align-left" style="margin-top:44px">My <span>Password</span></h2>
         <form class="admin-form" id="pw-form" style="max-width:460px">
           <div class="admin-form__grid" style="grid-template-columns:1fr">
@@ -337,6 +352,6 @@
 
     <div class="admin-gate" id="admin-gate">Checking access&hellip;</div>
 
-    <script src="js/admin.js?v=20"></script>
+    <script src="js/admin.js?v=22"></script>
   </body>
 </html>

@@ -3003,6 +3003,22 @@ textarea {
   font-size: 13px;
 }
 
+.admin-form label.switch-inline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-form label.switch-inline input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
 .admin-form__full {
   grid-column: 1 / -1;
 }
@@ -3290,6 +3306,33 @@ textarea {
 
 .img-cell.is-main .img-star {
   background: var(--accent);
+}
+
+.img-del {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(190, 36, 44, 0.9);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.img-cell:hover .img-del,
+.img-del:focus {
+  opacity: 1;
+}
+
+.img-del:hover {
+  background: #be242c;
 }
 
 .img-badge {
