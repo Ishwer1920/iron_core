@@ -2483,6 +2483,12 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
 
+  /* On tablet/mobile the two promo videos become square tiles (their media is
+     object-fit: cover, so it fills the square) instead of short wide bars. */
+  .promo-card {
+    aspect-ratio: 1 / 1;
+  }
+
   .cat-circles {
     grid-template-columns: repeat(4, 1fr);
   }
