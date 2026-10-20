@@ -1780,11 +1780,33 @@ textarea {
   }
 
   .brand img {
-    width: 48px;
+    width: 44px;
   }
 
   .brand strong {
-    font-size: 23px;
+    font-size: 21px;
+  }
+
+  .brand small {
+    margin-top: 3px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  /* Keep the top header row from overflowing on small phones. */
+  .header-main__inner {
+    gap: 8px;
+    min-height: 68px;
+  }
+
+  .header-icons {
+    gap: 7px;
+  }
+
+  /* Room at the bottom so the fixed Call Us / Send Enquiry bar never
+     covers the last bit of page content. */
+  body {
+    padding-bottom: 88px;
   }
 
   .hero-slide,
@@ -2481,8 +2503,24 @@ textarea {
     margin-top: 10px;
   }
 
+  .header-cats {
+    border-top: 0;
+  }
+
   .header-cats__inner {
     flex-wrap: wrap;
+    min-height: 0;
+  }
+
+  /* Only one menu button on mobile: the hamburger in the top row opens the
+     nav. The "All Categories" button is a confusing duplicate here, so hide
+     it and let the second row collapse to nothing until the menu is opened. */
+  .all-categories {
+    display: none;
+  }
+
+  .site-header.is-open .header-cats__inner {
+    padding: 4px 0 10px;
   }
 
   .site-header.is-open .main-nav {
@@ -2528,14 +2566,65 @@ textarea {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .header-icons .icon-btn {
-    width: 40px;
-    height: 40px;
+  .header-icons .icon-btn,
+  .menu-toggle {
+    width: 38px;
+    height: 38px;
   }
 
   .all-categories__btn .caret,
   .all-categories__btn .label {
     display: none;
+  }
+}
+
+/* Very small phones (≈320–400px): shrink the brand a touch more and drop the
+   wishlist shortcut (still reachable from the menu) so the top row always
+   fits on one line without overlapping. */
+@media (max-width: 400px) {
+  .brand img {
+    width: 40px;
+  }
+
+  .brand strong {
+    font-size: 19px;
+  }
+
+  .header-icons {
+    gap: 6px;
+  }
+
+  .header-icons .icon-btn,
+  .menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .wishlist-btn {
+    display: none;
+  }
+
+  /* Shrink the category circles so 3 across fit without horizontal scroll. */
+  .cat-circles {
+    gap: 10px;
+  }
+
+  .cat-circle {
+    padding: 8px 2px;
+  }
+
+  .cat-circle__img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cat-circle__img img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cat-circle span {
+    font-size: 12px;
   }
 }
 
