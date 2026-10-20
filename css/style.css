@@ -2487,8 +2487,12 @@ textarea {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  /* Brand on the left, the menu/account/cart icons pushed to the far right. */
   .header-main__inner {
-    grid-template-columns: auto 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     gap: 14px;
   }
 
@@ -2498,7 +2502,8 @@ textarea {
 
   .site-header.is-open .site-search {
     display: flex;
-    grid-column: 1 / -1;
+    order: 3;
+    flex: 1 1 100%;
     max-width: 100%;
     margin-top: 10px;
   }
