@@ -107,6 +107,19 @@ app.config.update(
 )
 
 
+@app.after_request
+def _cache_headers(resp):
+    """Never cache HTML, so a deploy's updated markup — and the ?v= asset
+    versions it points at — are picked up by every browser immediately
+    instead of showing a stale cached page."""
+    ctype = resp.headers.get("Content-Type", "")
+    if ctype.startswith("text/html"):
+        resp.headers["Cache-Control"] = "no-store, must-revalidate"
+        resp.headers["Pragma"] = "no-cache"
+        resp.headers["Expires"] = "0"
+    return resp
+
+
 def db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
