@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css?v=22" />
+    <link rel="stylesheet" href="css/style.css?v=23" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
   </head>
   <body class="admin-body">
     <header class="admin-topbar">
@@ -83,7 +84,7 @@
                   Upload image<input type="file" id="img-upload-input" accept="image/*" hidden />
                 </label>
               </div>
-              <p class="img-picker__hint">Click an image to add/remove it from the gallery. Click <b>&#9733;</b> to set the main image (shown first). Hover an image and click <b>&times;</b> (top-left) to permanently delete it from the server.</p>
+              <p class="img-picker__hint">These are this product's photos only. Click <b>Upload image</b> to add one from your device. On each photo: <b>&#9733;</b> set as main, <b>&#9998;</b> crop / rotate / straighten, <b>&times;</b> remove from this product.</p>
               <div class="img-grid" id="image-grid"></div>
               <input type="hidden" id="p-image" />
               <input type="hidden" id="p-images" />
@@ -352,6 +353,29 @@
 
     <div class="admin-gate" id="admin-gate">Checking access&hellip;</div>
 
-    <script src="js/admin.js?v=22"></script>
+    <!-- Photo editor (crop / rotate / straighten) -->
+    <div class="img-editor" id="img-editor" hidden>
+      <div class="img-editor__panel">
+        <div class="img-editor__head">
+          <strong>Edit photo</strong>
+          <button type="button" class="img-editor__close" id="ie-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="img-editor__stage"><img id="ie-img" alt="" /></div>
+        <div class="img-editor__tools">
+          <button type="button" class="btn btn-light" data-ie="rotate-left">&#8634; Rotate left</button>
+          <button type="button" class="btn btn-light" data-ie="rotate-right">Rotate right &#8635;</button>
+          <button type="button" class="btn btn-light" data-ie="flip-h">&#8646; Flip</button>
+          <label class="ie-tilt-label">Straighten
+            <input type="range" id="ie-tilt" min="-45" max="45" step="1" value="0" />
+          </label>
+          <button type="button" class="btn btn-light" data-ie="reset">Reset</button>
+          <button type="button" class="btn btn-primary" id="ie-save">Save image</button>
+        </div>
+        <p class="img-editor__hint">Drag the corners to crop, use rotate / straighten to fix a tilt or a photo cut off at the top. Saving replaces this photo on the product.</p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+    <script src="js/admin.js?v=23"></script>
   </body>
 </html>

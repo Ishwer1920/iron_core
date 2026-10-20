@@ -5163,3 +5163,97 @@ textarea {
 @media (max-width: 760px) {
   .codes-grid { grid-template-columns: 1fr; }
 }
+
+/* =====================================================================
+   Admin — per-product image picker + photo editor (crop/rotate)
+   ===================================================================== */
+.img-picker__empty {
+  color: #5a6270;
+  font-size: 14px;
+  padding: 10px 2px;
+}
+.img-cell.is-broken { display: none; }
+
+.img-edit {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 7px;
+  background: var(--brand, #2f5fa8);
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+.img-edit:hover { filter: brightness(1.1); }
+
+.img-editor {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(10, 12, 16, 0.82);
+}
+.img-editor[hidden] { display: none; }
+.img-editor__panel {
+  width: min(780px, 100%);
+  max-height: 94vh;
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  color: #14171c;
+}
+.img-editor__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+.img-editor__close {
+  border: 0;
+  background: none;
+  font-size: 28px;
+  line-height: 1;
+  color: #14171c;
+  cursor: pointer;
+}
+.img-editor__stage {
+  max-height: 58vh;
+  background: #f3f5ee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.img-editor__stage img {
+  display: block;
+  max-width: 100%;
+}
+.img-editor__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+.ie-tilt-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.ie-tilt-label input[type="range"] { width: 150px; }
+.img-editor__hint {
+  margin-top: 10px;
+  color: #5a6270;
+  font-size: 13px;
+}

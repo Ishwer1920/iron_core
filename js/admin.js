@@ -108,25 +108,110 @@
     syncPicker();
   }
   function renderImageGrid() {
-    const list = unique(allImages.concat(picker.selected));
+    // Only THIS product's images — not the whole server gallery.
+    const list = picker.selected;
+    if (!list.length) {
+      el("image-grid").innerHTML =
+        '<p class="img-picker__empty">No photo yet. Click <b>Upload image</b> above to add this product’s photo from your device.</p>';
+      return;
+    }
     el("image-grid").innerHTML = list.map(function (p) {
-      const sel = picker.selected.indexOf(p) >= 0;
       const main = picker.main === p;
-      return '<div class="img-cell' + (sel ? " is-sel" : "") + (main ? " is-main" : "") + '" data-path="' + esc(p) + '">' +
-        '<img src="' + esc(p) + '" alt="" loading="lazy" onerror="this.closest(\'.img-cell\').style.display=\'none\'">' +
-        '<button type="button" class="img-del" data-del="' + esc(p) + '" title="Delete image from server">&times;</button>' +
-        '<button type="button" class="img-star" data-main="' + esc(p) + '" title="Set as main">&#9733;</button>' +
-        (main ? '<span class="img-badge">Main</span>' : (sel ? '<span class="img-badge img-badge--sel">In gallery</span>' : "")) +
+      return '<div class="img-cell' + (main ? " is-main" : "") + '" data-path="' + esc(p) + '">' +
+        '<img src="' + esc(p) + '" alt="" loading="lazy" onerror="this.closest(\'.img-cell\').classList.add(\'is-broken\')">' +
+        '<button type="button" class="img-del" data-del="' + esc(p) + '" title="Remove from this product">&times;</button>' +
+        '<button type="button" class="img-star" data-main="' + esc(p) + '" title="Set as main image">&#9733;</button>' +
+        '<button type="button" class="img-edit" data-editimg="' + esc(p) + '" title="Edit photo (crop / rotate / straighten)">&#9998;</button>' +
+        (main ? '<span class="img-badge">Main</span>' : "") +
         "</div>";
     }).join("");
-    el("image-grid").querySelectorAll(".img-cell").forEach(function (cell) {
-      cell.querySelector("img").addEventListener("click", function () { toggleSelect(cell.dataset.path); });
-    });
     el("image-grid").querySelectorAll(".img-star").forEach(function (b) {
       b.addEventListener("click", function (e) { e.stopPropagation(); setMain(b.dataset.main); });
     });
     el("image-grid").querySelectorAll(".img-del").forEach(function (b) {
-      b.addEventListener("click", function (e) { e.stopPropagation(); deleteImage(b.dataset.del); });
+      b.addEventListener("click", function (e) { e.stopPropagation(); removeFromProduct(b.dataset.del); });
+    });
+    el("image-grid").querySelectorAll(".img-edit").forEach(function (b) {
+      b.addEventListener("click", function (e) { e.stopPropagation(); openImgEditor(b.dataset.editimg); });
+    });
+  }
+  function removeFromProduct(path) {
+    const s = picker.selected.indexOf(path);
+    if (s >= 0) {
+      picker.selected.splice(s, 1);
+      if (picker.main === path) picker.main = picker.selected[0] || "";
+    }
+    syncPicker();
+  }
+
+  /* ---------- photo editor (crop / rotate / straighten) ---------- */
+  let cropper = null, editTarget = null, tiltPrev = 0;
+  function openImgEditor(path) {
+    if (typeof Cropper === "undefined") { alert("The photo editor failed to load. Check your internet connection and reload."); return; }
+    editTarget = path;
+    tiltPrev = 0;
+    const tilt = el("ie-tilt"); if (tilt) tilt.value = 0;
+    const img = el("ie-img");
+    if (cropper) { cropper.destroy(); cropper = null; }
+    el("img-editor").hidden = false;
+    img.onload = function () {
+      if (cropper) { cropper.destroy(); cropper = null; }
+      cropper = new Cropper(img, { viewMode: 1, autoCropArea: 1, background: false, movable: true, zoomable: true, responsive: true });
+    };
+    // cache-bust so a freshly re-saved image reloads
+    img.src = path + (path.indexOf("?") < 0 ? "?e=" : "&e=") + Date.now();
+  }
+  function closeImgEditor() {
+    if (cropper) { cropper.destroy(); cropper = null; }
+    el("img-editor").hidden = true;
+    editTarget = null;
+  }
+  function wireEditor() {
+    if (!el("img-editor")) return;
+    el("ie-close").addEventListener("click", closeImgEditor);
+    el("img-editor").addEventListener("click", function (e) { if (e.target === el("img-editor")) closeImgEditor(); });
+    document.querySelectorAll("[data-ie]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (!cropper) return;
+        const a = b.dataset.ie;
+        if (a === "rotate-left") cropper.rotate(-90);
+        else if (a === "rotate-right") cropper.rotate(90);
+        else if (a === "flip-h") cropper.scaleX(-(cropper.getData().scaleX || 1));
+        else if (a === "reset") { cropper.reset(); el("ie-tilt").value = 0; tiltPrev = 0; }
+      });
+    });
+    el("ie-tilt").addEventListener("input", function () {
+      if (!cropper) return;
+      const v = parseFloat(this.value) || 0;
+      cropper.rotate(v - tiltPrev);
+      tiltPrev = v;
+    });
+    el("ie-save").addEventListener("click", function () {
+      if (!cropper || !editTarget) return;
+      const canvas = cropper.getCroppedCanvas({ maxWidth: 1600, maxHeight: 1600, fillColor: "#ffffff", imageSmoothingQuality: "high" });
+      if (!canvas) return;
+      const btn = el("ie-save"); btn.disabled = true; btn.textContent = "Saving…";
+      canvas.toBlob(function (blob) {
+        const base = (editTarget.split("/").pop() || "photo.jpg").replace(/\.(png|webp|gif|svg)$/i, ".jpg");
+        const fd = new FormData();
+        fd.append("file", blob, base);
+        fetch("/api/admin/images", { method: "POST", body: fd })
+          .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+          .then(function (r) {
+            btn.disabled = false; btn.textContent = "Save image";
+            if (r.ok && r.d.path) {
+              const wasMain = picker.main === editTarget;
+              const idx = picker.selected.indexOf(editTarget);
+              if (idx >= 0) picker.selected.splice(idx, 1, r.d.path); else picker.selected.push(r.d.path);
+              if (wasMain || !picker.main) picker.main = r.d.path;
+              syncPicker();
+              closeImgEditor();
+            } else {
+              alert((r.d && r.d.error) || "Could not save the edited image.");
+            }
+          })
+          .catch(function () { btn.disabled = false; btn.textContent = "Save image"; alert("Could not save the edited image."); });
+      }, "image/jpeg", 0.92);
     });
   }
   async function deleteImage(path) {
@@ -860,6 +945,7 @@
     loadOverview();
     loadMaintenance();
     wireUpload();
+    wireEditor();
     wireCategoryAdd();
     wireReviewFilter();
     wireBanners();
