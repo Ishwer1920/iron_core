@@ -100,7 +100,19 @@ img {
 }
 
 .brand img {
-  width: 56px;
+  width: auto;
+  height: 50px;
+}
+
+/* The logo image already contains the IRON CORE PHARMA wordmark, so hide the
+   separate text, and show a white version of it on the dark footer. */
+.brand span {
+  display: none;
+}
+
+.footer-brand img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 .brand strong,
@@ -1780,7 +1792,8 @@ textarea {
   }
 
   .brand img {
-    width: 44px;
+    width: auto;
+    height: 42px;
   }
 
   .brand strong {
@@ -2594,7 +2607,8 @@ textarea {
    fits on one line without overlapping. */
 @media (max-width: 400px) {
   .brand img {
-    width: 40px;
+    width: auto;
+    height: 38px;
   }
 
   .brand strong {
