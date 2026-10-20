@@ -337,7 +337,14 @@ def banner_row(r):
 
 def catalog_from_db():
     with db() as conn:
-        cats = [dict(slug=r["slug"], name=r["name"], count=r["count"], image=r["image"])
+        # Real number of products in each category, so counts reflect what is
+        # actually in stock (0 when empty) and grow as an admin adds products,
+        # instead of showing a fixed seeded number.
+        real_counts = {}
+        for r in conn.execute("SELECT category, COUNT(*) AS c FROM products GROUP BY category"):
+            real_counts[r["category"]] = r["c"]
+        cats = [dict(slug=r["slug"], name=r["name"],
+                     count=real_counts.get(r["slug"], 0), image=r["image"])
                 for r in conn.execute("SELECT * FROM categories ORDER BY sort, name")]
         prods = []
         for r in conn.execute("SELECT * FROM products ORDER BY sort, name"):
