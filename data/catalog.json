@@ -4,7 +4,7 @@
       "slug": "sports-nutrition",
       "name": "SPORTS NUTRITION",
       "count": 9,
-      "image": "img/products/nitri-x-core.jpg"
+      "image": "img/products/nitri-x-core-front.jpg"
     }
   ],
   "products": [
@@ -17,9 +17,9 @@
       "price": "Price on request",
       "rating": 4.9,
       "stock": "In stock",
-      "image": "img/products/nitri-x-core.jpg",
+      "image": "img/products/nitri-x-core-front.jpg",
       "images": [
-        "img/products/nitri-x-core.jpg",
+        "img/products/nitri-x-core-front.jpg",
         "img/products/nitri-x-core-left.jpg",
         "img/products/nitri-x-core-right.jpg"
       ],
@@ -34,9 +34,9 @@
       "price": "Price on request",
       "rating": 4.8,
       "stock": "In stock",
-      "image": "img/products/d3-x-core.jpg",
+      "image": "img/products/d3-x-core-front.jpg",
       "images": [
-        "img/products/d3-x-core.jpg",
+        "img/products/d3-x-core-front.jpg",
         "img/products/d3-x-core-left.jpg",
         "img/products/d3-x-core-right.jpg"
       ],
@@ -51,9 +51,9 @@
       "price": "Price on request",
       "rating": 4.9,
       "stock": "In stock",
-      "image": "img/products/mk-677.jpg",
+      "image": "img/products/mk-677-front.jpg",
       "images": [
-        "img/products/mk-677.jpg",
+        "img/products/mk-677-front.jpg",
         "img/products/mk-677-left.jpg",
         "img/products/mk-677-right.jpg"
       ],
@@ -68,9 +68,9 @@
       "price": "Price on request",
       "rating": 4.9,
       "stock": "In stock",
-      "image": "img/products/mk-677-small.jpg",
+      "image": "img/products/mk-677-small-front.jpg",
       "images": [
-        "img/products/mk-677-small.jpg",
+        "img/products/mk-677-small-front.jpg",
         "img/products/mk-677-small-left.jpg",
         "img/products/mk-677-small-right.jpg"
       ],
@@ -85,9 +85,9 @@
       "price": "Price on request",
       "rating": 4.8,
       "stock": "In stock",
-      "image": "img/products/lgd-4033.jpg",
+      "image": "img/products/lgd-4033-front.jpg",
       "images": [
-        "img/products/lgd-4033.jpg",
+        "img/products/lgd-4033-front.jpg",
         "img/products/lgd-4033-left.jpg",
         "img/products/lgd-4033-right.jpg"
       ],
@@ -102,9 +102,9 @@
       "price": "Price on request",
       "rating": 4.7,
       "stock": "In stock",
-      "image": "img/products/1ad-x-core.jpg",
+      "image": "img/products/1ad-x-core-front.jpg",
       "images": [
-        "img/products/1ad-x-core.jpg",
+        "img/products/1ad-x-core-front.jpg",
         "img/products/1ad-x-core-left.jpg",
         "img/products/1ad-x-core-right.jpg"
       ],
@@ -119,9 +119,9 @@
       "price": "Price on request",
       "rating": 4.7,
       "stock": "In stock",
-      "image": "img/products/gaint-x-core.jpg",
+      "image": "img/products/gaint-x-core-front.jpg",
       "images": [
-        "img/products/gaint-x-core.jpg",
+        "img/products/gaint-x-core-front.jpg",
         "img/products/gaint-x-core-left.jpg",
         "img/products/gaint-x-core-right.jpg"
       ],
@@ -136,9 +136,9 @@
       "price": "Price on request",
       "rating": 4.7,
       "stock": "In stock",
-      "image": "img/products/bulk-x-core.jpg",
+      "image": "img/products/bulk-x-core-front.jpg",
       "images": [
-        "img/products/bulk-x-core.jpg",
+        "img/products/bulk-x-core-front.jpg",
         "img/products/bulk-x-core-left.jpg",
         "img/products/bulk-x-core-right.jpg"
       ],
@@ -153,9 +153,9 @@
       "price": "Price on request",
       "rating": 4.7,
       "stock": "In stock",
-      "image": "img/products/supra-x-core.jpg",
+      "image": "img/products/supra-x-core-front.jpg",
       "images": [
-        "img/products/supra-x-core.jpg",
+        "img/products/supra-x-core-front.jpg",
         "img/products/supra-x-core-left.jpg",
         "img/products/supra-x-core-right.jpg"
       ],

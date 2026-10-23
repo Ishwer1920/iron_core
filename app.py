@@ -119,6 +119,10 @@ def _cache_headers(resp):
         resp.headers["Cache-Control"] = "no-store, must-revalidate"
         resp.headers["Pragma"] = "no-cache"
         resp.headers["Expires"] = "0"
+    elif "/img/products/" in path or "/img/banners/" in path:
+        # Product/banner photos can be replaced in place from the admin, so
+        # make browsers revalidate rather than show a stale cached image.
+        resp.headers["Cache-Control"] = "no-cache"
     return resp
 
 
