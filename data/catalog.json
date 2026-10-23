@@ -4,7 +4,7 @@
       "slug": "sports-nutrition",
       "name": "SPORTS NUTRITION",
       "count": 9,
-      "image": "img/products/mk-677.jpg"
+      "image": "img/products/nitri-x-core.jpg"
     }
   ],
   "products": [
@@ -20,8 +20,8 @@
       "image": "img/products/nitri-x-core.jpg",
       "images": [
         "img/products/nitri-x-core.jpg",
-        "img/products/nitri-x-core-2.jpg",
-        "img/products/nitri-x-core-3.jpg"
+        "img/products/nitri-x-core-left.jpg",
+        "img/products/nitri-x-core-right.jpg"
       ],
       "description": "A powerful nitric oxide support formula engineered to help you achieve intense muscle pumps, increased blood flow and epic workouts. Every serving is packed with proven ingredients that work synergistically to fuel your performance and physique goals. These statements have not been evaluated by the FDA; this product is not intended to diagnose, treat, cure or prevent any disease."
     },
@@ -37,8 +37,8 @@
       "image": "img/products/d3-x-core.jpg",
       "images": [
         "img/products/d3-x-core.jpg",
-        "img/products/d3-x-core-2.jpg",
-        "img/products/d3-x-core-3.jpg"
+        "img/products/d3-x-core-left.jpg",
+        "img/products/d3-x-core-right.jpg"
       ],
       "description": "An advanced high-potency Vitamin D3 formula with K2, magnesium, zinc and boron, formulated to support heart health, bone health and overall energy & vitality. Take 1 tablet daily with water, preferably with a meal."
     },
@@ -54,27 +54,27 @@
       "image": "img/products/mk-677.jpg",
       "images": [
         "img/products/mk-677.jpg",
-        "img/products/mk-677-2.jpg",
-        "img/products/mk-677-3.jpg"
+        "img/products/mk-677-left.jpg",
+        "img/products/mk-677-right.jpg"
       ],
       "description": "A premium research compound designed to support the body's natural growth hormone levels, helping to promote muscle growth, improve recovery and enhance overall well-being. This product is for research purposes only and not for human consumption."
     },
     {
-      "slug": "rad-140",
+      "slug": "mk-677-small",
       "category": "sports-nutrition",
-      "name": "RAD 140 (Testolone)",
-      "composition": "RAD-140 10 mg per tablet",
-      "packSize": "60 Tablets",
+      "name": "MK 677 (Ibutamoren) — Small Pack",
+      "composition": "MK-677 (Ibutamoren) 10 mg per tablet",
+      "packSize": "30 Tablets",
       "price": "Price on request",
-      "rating": 4.8,
+      "rating": 4.9,
       "stock": "In stock",
-      "image": "img/products/rad-140.jpg",
+      "image": "img/products/mk-677-small.jpg",
       "images": [
-        "img/products/rad-140.jpg",
-        "img/products/rad-140-2.jpg",
-        "img/products/rad-140-3.jpg"
+        "img/products/mk-677-small.jpg",
+        "img/products/mk-677-small-left.jpg",
+        "img/products/mk-677-small-right.jpg"
       ],
-      "description": "An investigational SARM designed to selectively interact with androgen receptors, mainly in muscle and bone tissues, researched for potential applications involving muscle and bone. This product is for research purposes only and not for human consumption."
+      "description": "A premium research compound designed to support the body's natural growth hormone levels, helping to promote muscle growth, improve recovery and enhance overall well-being. Smaller 30-tablet pack. This product is for research purposes only and not for human consumption."
     },
     {
       "slug": "lgd-4033",
@@ -88,10 +88,10 @@
       "image": "img/products/lgd-4033.jpg",
       "images": [
         "img/products/lgd-4033.jpg",
-        "img/products/lgd-4033-2.jpg",
-        "img/products/lgd-4033-3.jpg"
+        "img/products/lgd-4033-left.jpg",
+        "img/products/lgd-4033-right.jpg"
       ],
-      "description": "A premium research compound classified as a selective androgen receptor modulator (SARM), designed to support the body's natural growth hormone levels and help promote muscle growth, improved recovery and overall well-being. This product is for research purposes only and not for human consumption."
+      "description": "A premium research compound classified as a selective androgen receptor modulator (SARM), designed to support muscle growth, improved recovery and overall well-being. This product is for research purposes only and not for human consumption."
     },
     {
       "slug": "1ad-x-core",
@@ -105,7 +105,8 @@
       "image": "img/products/1ad-x-core.jpg",
       "images": [
         "img/products/1ad-x-core.jpg",
-        "img/products/1ad-x-core-2.jpg"
+        "img/products/1ad-x-core-left.jpg",
+        "img/products/1ad-x-core-right.jpg"
       ],
       "description": "An advanced prohormone formula designed for serious athletes who demand maximum gains in strength, size and performance, built with powerful 1-androstenediol to support lean muscle growth, strength and recovery. These statements have not been evaluated by the FDA; this product is not intended to diagnose, treat, cure or prevent any disease."
     },
@@ -121,8 +122,8 @@
       "image": "img/products/gaint-x-core.jpg",
       "images": [
         "img/products/gaint-x-core.jpg",
-        "img/products/gaint-x-core-2.jpg",
-        "img/products/gaint-x-core-3.jpg"
+        "img/products/gaint-x-core-left.jpg",
+        "img/products/gaint-x-core-right.jpg"
       ],
       "description": "An advanced muscle-building formula with a proprietary muscle gain blend to support lean muscle growth, strength & power and healthy weight gain. These statements have not been evaluated by the FDA; this product is not intended to diagnose, treat, cure or prevent any disease."
     },
@@ -138,10 +139,10 @@
       "image": "img/products/bulk-x-core.jpg",
       "images": [
         "img/products/bulk-x-core.jpg",
-        "img/products/bulk-x-core-2.jpg",
-        "img/products/bulk-x-core-3.jpg"
+        "img/products/bulk-x-core-left.jpg",
+        "img/products/bulk-x-core-right.jpg"
       ],
-      "description": "A muscle-support formula designed for experienced adult users, combining a targeted blend of prohormone ingredients (where legally permitted) with carefully selected botanical extracts to support training intensity, strength and muscle development. These statements have not been evaluated by the FDA; this product is not intended to diagnose, treat, cure or prevent any disease."
+      "description": "A muscle-support formula designed for experienced adult users, combining prohormone ingredients (where legally permitted) with botanical extracts to support training intensity, strength and muscle development. These statements have not been evaluated by the FDA; this product is not intended to diagnose, treat, cure or prevent any disease."
     },
     {
       "slug": "supra-x-core",
@@ -155,10 +156,10 @@
       "image": "img/products/supra-x-core.jpg",
       "images": [
         "img/products/supra-x-core.jpg",
-        "img/products/supra-x-core-2.jpg",
-        "img/products/supra-x-core-3.jpg"
+        "img/products/supra-x-core-left.jpg",
+        "img/products/supra-x-core-right.jpg"
       ],
-      "description": "Formulated to support strength, muscle fullness, training intensity and overall athletic performance when combined with proper nutrition and a consistent training program. Ideal for experienced athletes and fitness enthusiasts seeking a comprehensive addition to their routine. These statements have not been evaluated by the FDA; this product is not intended to diagnose, treat, cure or prevent any disease."
+      "description": "Formulated to support strength, muscle fullness, training intensity and overall athletic performance when combined with proper nutrition and training. Ideal for experienced athletes and fitness enthusiasts. These statements have not been evaluated by the FDA; this product is not intended to diagnose, treat, cure or prevent any disease."
     }
   ]
 }
