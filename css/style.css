@@ -1908,9 +1908,9 @@ textarea {
   }
 
   .floating-actions {
-    left: 12px;
+    left: auto;
     right: 12px;
-    justify-content: center;
+    justify-content: flex-end;
   }
 }
 
@@ -2589,6 +2589,12 @@ textarea {
     width: 100%;
     padding-top: 6px;
     order: 4;
+  }
+
+  /* While the mobile menu is open, hide the floating Call Us / Send Enquiry
+     bar so the full category list is visible and nothing is covered. */
+  .site-header.is-open ~ .floating-actions {
+    display: none;
   }
 }
 
