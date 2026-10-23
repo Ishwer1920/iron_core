@@ -1,16 +1,80 @@
 {
   "categories": [
     {
-      "slug": "sports-nutrition",
-      "name": "SPORTS NUTRITION",
-      "count": 9,
-      "image": "img/products/nitri-x-core-front.jpg"
+      "slug": "sarms",
+      "name": "SARMS",
+      "count": 0,
+      "image": "img/products/mk-677-front.jpg",
+      "sort": 0
+    },
+    {
+      "slug": "proprietary-blend",
+      "name": "PROPRIETARY BLEND",
+      "count": 0,
+      "image": "img/products/gaint-x-core-front.jpg",
+      "sort": 1
+    },
+    {
+      "slug": "wellness",
+      "name": "WELLNESS",
+      "count": 0,
+      "image": "img/products/d3-x-core-front.jpg",
+      "sort": 2
+    },
+    {
+      "slug": "prohormone",
+      "name": "PROHORMONE",
+      "count": 0,
+      "image": "img/products/1ad-x-core-front.jpg",
+      "sort": 3
+    },
+    {
+      "slug": "injections",
+      "name": "INJECTIONS",
+      "count": 0,
+      "image": "img/product-injection.svg",
+      "sort": 4
+    },
+    {
+      "slug": "tablets",
+      "name": "TABLETS",
+      "count": 0,
+      "image": "img/product-tablets.svg",
+      "sort": 5
+    },
+    {
+      "slug": "capsules",
+      "name": "CAPSULES",
+      "count": 0,
+      "image": "img/product-capsules.svg",
+      "sort": 6
+    },
+    {
+      "slug": "fat-burner",
+      "name": "FAT BURNER",
+      "count": 0,
+      "image": "img/product-capsules.svg",
+      "sort": 7
+    },
+    {
+      "slug": "nitrix",
+      "name": "NITRIX",
+      "count": 0,
+      "image": "img/products/nitri-x-core-front.jpg",
+      "sort": 8
+    },
+    {
+      "slug": "sexual-wellness",
+      "name": "SEXUAL WELLNESS",
+      "count": 0,
+      "image": "img/product-capsules.svg",
+      "sort": 9
     }
   ],
   "products": [
     {
       "slug": "nitri-x-core",
-      "category": "sports-nutrition",
+      "category": "nitrix",
       "name": "Nitri X Core — Nitric Oxide & Pump Matrix",
       "composition": "Nitro Performance Blend: L-Citrulline, L-Arginine AKG, Beet Root Extract, L-Taurine, Agmatine Sulfate, Pine Bark Extract, Black Pepper Extract",
       "packSize": "90 Tablets",
@@ -27,7 +91,7 @@
     },
     {
       "slug": "d3-x-core",
-      "category": "sports-nutrition",
+      "category": "wellness",
       "name": "D3 X Core — Vitamin D3 10,000 IU",
       "composition": "Vitamin D3 (as Cholecalciferol) 10,000 IU, Vitamin K2 (as MK-7), Magnesium, Zinc, Boron",
       "packSize": "60 Tablets",
@@ -44,7 +108,7 @@
     },
     {
       "slug": "mk-677",
-      "category": "sports-nutrition",
+      "category": "sarms",
       "name": "MK 677 (Ibutamoren)",
       "composition": "MK-677 (Ibutamoren) 10 mg per tablet",
       "packSize": "60 Tablets",
@@ -61,7 +125,7 @@
     },
     {
       "slug": "mk-677-small",
-      "category": "sports-nutrition",
+      "category": "sarms",
       "name": "MK 677 (Ibutamoren) — Small Pack",
       "composition": "MK-677 (Ibutamoren) 10 mg per tablet",
       "packSize": "30 Tablets",
@@ -78,7 +142,7 @@
     },
     {
       "slug": "lgd-4033",
-      "category": "sports-nutrition",
+      "category": "sarms",
       "name": "LGD 4033 (Ligandrol)",
       "composition": "LGD-4033 (Ligandrol) 10 mg per tablet",
       "packSize": "60 Tablets",
@@ -95,7 +159,7 @@
     },
     {
       "slug": "1ad-x-core",
-      "category": "sports-nutrition",
+      "category": "prohormone",
       "name": "1AD X Core — Prohormone Support",
       "composition": "1-Androstenediol (1AD) 100 mg per tablet",
       "packSize": "60 Tablets",
@@ -112,7 +176,7 @@
     },
     {
       "slug": "gaint-x-core",
-      "category": "sports-nutrition",
+      "category": "proprietary-blend",
       "name": "Gaint X Core — Muscle Gain Formula",
       "composition": "Proprietary Muscle Gain Blend 1500 mg",
       "packSize": "60 Tablets",
@@ -129,7 +193,7 @@
     },
     {
       "slug": "bulk-x-core",
-      "category": "sports-nutrition",
+      "category": "prohormone",
       "name": "Bulk X Core — Advanced Bulking Formula",
       "composition": "Pro Hormones & Herbs Proprietary Blend 750 mg",
       "packSize": "30 Tablets",
@@ -146,7 +210,7 @@
     },
     {
       "slug": "supra-x-core",
-      "category": "sports-nutrition",
+      "category": "prohormone",
       "name": "Supra X Core — Muscle Building Formula",
       "composition": "Methasterone 10 mg per tablet",
       "packSize": "60 Tablets",
