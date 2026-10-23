@@ -220,7 +220,9 @@ function productCardMarkup(product) {
 function renderFeatured() {
   const grid = document.getElementById("featured-products");
   if (!grid || !window.ironCoreCatalog) return;
-  const featured = window.ironCoreCatalog.products.filter((p) => p.category === "sports-nutrition");
+  // Show up to 8 products as "featured" — independent of any specific
+  // category, so the home page always shows products.
+  const featured = window.ironCoreCatalog.products.slice(0, 8);
   grid.innerHTML = featured.map(productCardMarkup).join("");
   window.IronStore?.syncBadges();
 }
