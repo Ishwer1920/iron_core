@@ -2536,20 +2536,59 @@ textarea {
     min-height: 0;
   }
 
-  /* Only one menu button on mobile: the hamburger in the top row opens the
-     nav. The "All Categories" button is a confusing duplicate here, so hide
-     it and let the second row collapse to nothing until the menu is opened. */
+  /* One menu button on mobile: the hamburger opens the nav. The "All
+     Categories" button is hidden while closed (it would look like a duplicate
+     hamburger) and shown as a full-width categories list once the menu opens. */
   .all-categories {
     display: none;
   }
 
+  .site-header.is-open .all-categories {
+    display: block;
+    width: 100%;
+    order: 5;
+    margin-top: 6px;
+    border-top: 1px solid #eef0f2;
+    padding-top: 10px;
+  }
+
+  .site-header.is-open .all-categories__btn {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .site-header.is-open .all-categories__btn .label,
+  .site-header.is-open .all-categories__btn .caret {
+    display: inline;
+  }
+
+  .site-header.is-open .all-categories__menu {
+    display: block;
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: none;
+    border: 0;
+    width: 100%;
+    min-width: 0;
+    max-height: none;
+    margin-top: 6px;
+    padding: 2px 0 0;
+    overflow: visible;
+  }
+
   .site-header.is-open .header-cats__inner {
     padding: 4px 0 10px;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .site-header.is-open .main-nav {
     width: 100%;
     padding-top: 6px;
+    order: 4;
   }
 }
 

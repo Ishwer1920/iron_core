@@ -293,3 +293,24 @@ if (isProductCatalogPage) {
   }
 }
 renderFeatured();
+
+/* ---------------------------------------------------------------------------
+   Populate the header "All Categories" dropdown from the live catalog, on
+   every page. Works for the desktop dropdown and the mobile menu.
+   --------------------------------------------------------------------------- */
+(function () {
+  function fillHeaderCategories() {
+    var cats = (window.ironCoreCatalog && window.ironCoreCatalog.categories) || [];
+    var menus = document.querySelectorAll(".all-categories__menu");
+    if (!menus.length || !cats.length) return;
+    var html = cats.map(function (c) {
+      return '<a href="products.html#' + encodeURIComponent(c.slug) + '">' + c.name + "</a>";
+    }).join("");
+    menus.forEach(function (m) { m.innerHTML = html; });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", fillHeaderCategories);
+  } else {
+    fillHeaderCategories();
+  }
+})();
